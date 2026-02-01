@@ -2,78 +2,80 @@
 
 **Synthetic Data Pipeline and YOLO-like Object Detector for Waste Recognition in Venice Workboats.**
 
-Questo progetto sviluppa un sistema di visione artificiale per il riconoscimento automatico dei rifiuti galleggianti nei canali di Venezia. Il sistema è progettato per operare sui nastri trasportatori delle imbarcazioni di **Belisama Yacht**, fornendo report periodici sulla tipologia e quantità di rifiuti raccolti.
+This project develops an artificial vision system for automatic recognition of floating waste in the channels of Venice. The system is designed to operate on the conveyor belts of **Belisama Yacht** workboats, providing periodic reports on the type and quantity of waste collected.
 
 ---
 
-## 📋 Indice
-- [Descrizione del Progetto](#descrizione-del-progetto)
-- [Struttura della Repository](#struttura-della-repository)
-- [Pipeline del Dataset Sintetico](#pipeline-del-dataset-sintetico)
-- [Modelli di Object Detection](#modelli-di-object-detection)
-- [Risultati](#risultati)
-- [Contatti](#contatti)
+## 📋 Table of Contents
+- [Project Description](#project-description)
+- [Repository Structure](#repository-structure)
+- [Synthetic Dataset Pipeline](#synthetic-dataset-pipeline)
+- [Object Detection Models](#object-detection-models)
+- [Results](#results)
+- [Contacts](#contacts)
 
 ---
 
-## 📝 Descrizione del Progetto
-A causa della scarsità di dataset reali per i rifiuti acquatici veneziani, abbiamo sviluppato una pipeline per la generazione di **immagini sintetiche realistiche**. Il sistema analizza i fotogrammi estratti dal nastro trasportatore tramite una camera zenitale. 
+## 📝 Project Description
+Since no test videos are available to build the images to be analyzed, as the first boat of this class is expected to be ready by April 2026, we developed a pipeline for generating **realistic synthetic images**. The system analyzes frames extracted from the conveyor belt via an overhead camera.
 
-Il progetto confronta due approcci:
-1. **Fine-tuning di YOLOv11 Nano**: per prestazioni professionali.
-2. **Custom Minimal YOLO**: un modello da 1.6M di parametri sviluppato da zero per analizzare i meccanismi di detection (grid-based).
+The project compares two approaches:
+1. **YOLOv11 Nano Fine-tuning**: for professional performance.
+2. **Custom Minimal YOLO**: a model with 1.6M parameters developed from scratch to analyze YOLO mechanisms.
 
 ---
 
-## 📂 Struttura della Repository
+## 📂 Repository Structure
 
 ```text
 ├── dataset/
-│   ├── synthetic_scripts/      # Script per la costruzione del dataset sintetico
-│   ├── backgrounds/            # Immagini del nastro trasportatore utilizzate come sfondo
-│   ├── class_preferences.json  # Parametri (colori, size, rotazione) per ogni classe
-│   └── main_reference.json     # Limiti e dimensioni dell'area di lavoro
+│   ├── dataset/                # Folder with the yaml file, where the synthetic dataset is going to be
+│   ├── objects_creation/       # Folder for processing object images
+│   ├── refined_backgrounds/    # Conveyor belt images used as backgrounds
+│   ├── scripts/                # Python scripts to generate dataset (numerated)
+│   ├── class_preferences.json  # Parameters (colors, size, rotation) for each class
+│   └── main_reference.json     # Working area limits and dimensions
 │
 ├── scripts/
-│   ├── my_yolo/                # Codice del modello custom (Loss, Metriche, Notebook Colab)
-│   └── yolo/                   # Notebook per fine-tuning YOLOv11 e script di test
+│   ├── my_yolo/                # Custom model code (Loss, Metrics, Colab Notebook)
+│   └── yolo/                   # Notebooks for YOLOv11 fine-tuning and test scripts
 │
 ├── trained_models/
-│   ├── my_yolo/                # Pesi del modello custom (.pth)
-│   └── yolo/                   # Pesi del modello YOLOv11 fine-tunato (.pt)
+│   ├── my_yolo/                # Custom model weights (.pt)
+│   └── yolo/                   # Fine-tuned YOLOv11 weights (.pt)
 │
 └── README.md
 ```
 
-## 🛠 Pipeline del Dataset Sintetico
-La generazione dei dati è gestita dagli script nella cartella dataset/synthetic_scripts/.
+## 🛠 Synthetic Dataset Pipeline
+Data generation is managed by scripts in the dataset/scripts/ folder.
 
-**Logica di funzionamento**:
-**Configurazione**: I parametri di realismo sono definiti in class_preferences.json (es. probabilità di aderenza al nastro, rotazione, scaling).
-**Preprocessing**: Le immagini degli oggetti vengono ritagliate, orientate orizzontalmente e filtrate per variazioni di colore e luminosità.
-**Augmentation**: Viene applicato un blur uniforme per ridurre i bordi netti dell'overlay e simulare oscillazioni della telecamera tramite crop dinamici del background definiti in main_reference.json.
-Nota: La cartella finale yolo_dataset (~1GB) è esclusa dalla repository per limiti di spazio.
+**Operating Logic**:
+**Configuration**: Realism parameters are defined in class_preferences.json (e.g., belt adhesion probability, rotation, scaling).
+**Preprocessing**: Object images are cropped, oriented horizontally, and filtered for color and brightness variations.
+**Augmentation**: Uniform blur is applied to reduce sharp overlay edges and simulate camera oscillations through dynamic background crops defined in main_reference.json.
 
-## 🧠 Modelli di Object Detection
+After running the scripts in the sequence shown and fine-tuning the parameters for each class and script, your dataset will be ready for use.
+
+## 🧠 Object Detection Models
 **YOLOv11 Nano**
-Abbiamo utilizzato il transfer learning per adattare YOLOv11n al nostro scenario specifico (14 classi di rifiuti + 1 classe "other").
+We used transfer learning to adapt YOLOv11n to our specific scenario (13 waste classes + 1 "other" class).
 
-**Notebook di training**: Disponibile in scripts/yolo/
+**Training Notebook**: Available in scripts/yolo/
 **Performance**: Precision 0.97, Recall 0.93.
 
 **Custom Minimal YOLO-like**
-Sviluppato per fini di ricerca interna, utilizza:
+Developed for internal research purposes, it uses:
 
-**Architettura**: Backbone convoluzionale (stride 2) e Neck con blocchi residui (skip connections).
-**Grid**: 20x20 cells (fino a 400 predizioni).
-**Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) e Cross Entropy (classi).
-**NMS**: Implementazione vettorizzata di Non-Maximum Suppression.
-**Codice sorgente**: Disponibile in scripts/my_yolo/
+**Architecture**: Convolutional backbone (stride 2) and Neck with residual blocks (skip connections).
+**Grid**: 20x20 cells (up to 400 predictions, just one for each cell).
+**Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) and Cross Entropy (classes).
+**Source Code**: Available in scripts/my_yolo/
 
-## 📈 Risultati
-Il modello custom ha raggiunto un F1-score di 0.69, dimostrando ottime capacità di localizzazione, pur risentendo delle occlusioni pesanti in casi di oggetti sovrapposti. YOLOv11n garantisce invece la robustezza necessaria per l'impiego industriale.
+## 📈 Results
+The custom model achieved an F1-score of 0.69, demonstrating excellent localization capabilities, although it is affected by heavy occlusions in cases of overlapping objects. YOLOv11n, on the other hand, provides the robustness necessary for industrial deployment.
 
-## 🤝 Contatti
+## 🤝 Contacts
 **Damiano Marton** - Belisama Yacht
 📧 damiano.marton@studenti.unipd.it
 📧 damianomarton@belisamayacht.it
