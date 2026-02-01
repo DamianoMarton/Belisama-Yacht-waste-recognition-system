@@ -51,8 +51,11 @@ The project compares two approaches:
 Data generation is managed by scripts in the dataset/scripts/ folder.
 
 **Operating Logic**:
+
 **Configuration**: Realism parameters are defined in class_preferences.json (e.g., belt adhesion probability, rotation, scaling).
+
 **Preprocessing**: Object images are cropped, oriented horizontally, and filtered for color and brightness variations.
+
 **Augmentation**: Uniform blur is applied to reduce sharp overlay edges and simulate camera oscillations through dynamic background crops defined in main_reference.json.
 
 After running the scripts in the sequence shown and fine-tuning the parameters for each class and script, your dataset will be ready for use.
