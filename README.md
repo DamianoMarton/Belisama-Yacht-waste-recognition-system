@@ -1,4 +1,4 @@
-# Belisama Yacht Waste Recognition 🚤🚮
+# Belisama Yacht Waste Recognition
 
 **Synthetic Data Pipeline and YOLO-like Object Detector for Waste Recognition in Venice Workboats.**
 
@@ -16,7 +16,7 @@ This project develops an artificial vision system for automatic recognition of f
 
 ---
 
-## 📝 Project Description
+## Project Description
 Since no test videos are available to build the images to be analyzed, as the first boat of this class is expected to be ready by April 2026, we developed a pipeline for generating **realistic synthetic images**. The system analyzes frames extracted from the conveyor belt via an overhead camera.
 
 The project compares two approaches:
@@ -25,7 +25,7 @@ The project compares two approaches:
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 ├── dataset/
@@ -47,7 +47,7 @@ The project compares two approaches:
 └── README.md
 ```
 
-## 🛠 Synthetic Dataset Pipeline
+## Synthetic Dataset Pipeline
 Data generation is managed by scripts in the dataset/scripts/ folder.
 
 **Operating Logic**:
@@ -57,7 +57,7 @@ Data generation is managed by scripts in the dataset/scripts/ folder.
 
 After running the scripts in the sequence shown and fine-tuning the parameters for each class and script, your dataset will be ready for use.
 
-## 🧠 Object Detection Models
+## Object Detection Models
 **YOLOv11 Nano**
 We used transfer learning to adapt YOLOv11n to our specific scenario (13 waste classes + 1 "other" class).
 
@@ -72,10 +72,10 @@ Developed for internal research purposes, it uses:
 **Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) and Cross Entropy (classes).
 **Source Code**: Available in scripts/my_yolo/
 
-## 📈 Results
+## Results
 The custom model achieved an F1-score of 0.69, demonstrating excellent localization capabilities, although it is affected by heavy occlusions in cases of overlapping objects. YOLOv11n, on the other hand, provides the robustness necessary for industrial deployment.
 
-## 🤝 Contacts
+## Contacts
 **Damiano Marton** - Belisama Yacht
 📧 damiano.marton@studenti.unipd.it
 📧 damianomarton@belisamayacht.it
