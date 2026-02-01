@@ -43,3 +43,30 @@ Il progetto confronta due approcci:
 │   └── yolo/                   # Pesi del modello YOLOv11 fine-tunato (.pt)
 │
 └── README.md
+
+## 🛠 Pipeline del Dataset Sintetico
+La generazione dei dati è gestita dagli script nella cartella dataset/synthetic_scripts/.
+**Logica di funzionamento**:
+**Configurazione**: I parametri di realismo sono definiti in class_preferences.json (es. probabilità di aderenza al nastro, rotazione, scaling).
+**Preprocessing**: Le immagini degli oggetti vengono ritagliate, orientate orizzontalmente e filtrate per variazioni di colore e luminosità.
+**Augmentation**: Viene applicato un blur uniforme per ridurre i bordi netti dell'overlay e simulare oscillazioni della telecamera tramite crop dinamici del background definiti in main_reference.json.
+Nota: La cartella finale yolo_dataset (~1GB) è esclusa dalla repository per limiti di spazio.
+## 🧠 Modelli di Object Detection
+**YOLOv11 Nano**
+Abbiamo utilizzato il transfer learning per adattare YOLOv11n al nostro scenario specifico (14 classi di rifiuti + 1 classe "other").
+**Notebook di training**: Disponibile in scripts/yolo/
+**Performance**: Precision 0.97, Recall 0.93.
+**Custom Minimal YOLO-like**
+Sviluppato per fini di ricerca interna, utilizza:
+**Architettura**: Backbone convoluzionale (stride 2) e Neck con blocchi residui (skip connections).
+**Grid**: 20x20 cells (fino a 400 predizioni).
+**Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) e Cross Entropy (classi).
+**NMS**: Implementazione vettorizzata di Non-Maximum Suppression.
+**Codice sorgente**: Disponibile in scripts/my_yolo/
+## 📈 Risultati
+Il modello custom ha raggiunto un F1-score di 0.69, dimostrando ottime capacità di localizzazione, pur risentendo delle occlusioni pesanti in casi di oggetti sovrapposti. YOLOv11n garantisce invece la robustezza necessaria per l'impiego industriale.
+## 🤝 Contatti
+**Damiano Marton** - Belisama Yacht
+📧 damiano.marton@studenti.unipd.it
+📧 damianomarton@belisamayacht.it
+🌐 www.belisamayacht.it
