@@ -52,28 +52,28 @@ Data generation is managed by scripts in the dataset/scripts/ folder.
 
 **Operating Logic**:
 
-**Configuration**: Realism parameters are defined in class_preferences.json (e.g., belt adhesion probability, rotation, scaling).
-
-**Preprocessing**: Object images are cropped, oriented horizontally, and filtered for color and brightness variations.
-
-**Augmentation**: Uniform blur is applied to reduce sharp overlay edges and simulate camera oscillations through dynamic background crops defined in main_reference.json.
+- **Configuration**: Realism parameters are defined in class_preferences.json (e.g., belt adhesion probability, rotation, scaling).
+- **Preprocessing**: Object images are cropped, oriented horizontally, and filtered for color and brightness variations.
+- **Augmentation**: Uniform blur is applied to reduce sharp overlay edges and simulate camera oscillations through dynamic background crops defined in main_reference.json.
 
 After running the scripts in the sequence shown and fine-tuning the parameters for each class and script, your dataset will be ready for use.
 
 ## Object Detection Models
 **YOLOv11 Nano**
+
 We used transfer learning to adapt YOLOv11n to our specific scenario (13 waste classes + 1 "other" class).
 
-**Training Notebook**: Available in scripts/yolo/
-**Performance**: Precision 0.97, Recall 0.93.
+- **Training Notebook**: Available in scripts/yolo/
+- **Performance**: Precision 0.97, Recall 0.93.
 
 **Custom Minimal YOLO-like**
+
 Developed for internal research purposes, it uses:
 
-**Architecture**: Convolutional backbone (stride 2) and Neck with residual blocks (skip connections).
-**Grid**: 20x20 cells (up to 400 predictions, just one for each cell).
-**Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) and Cross Entropy (classes).
-**Source Code**: Available in scripts/my_yolo/
+- **Architecture**: Convolutional backbone (stride 2) and Neck with residual blocks (skip connections).
+- **Grid**: 20x20 cells (up to 400 predictions, just one for each cell).
+- **Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) and Cross Entropy (classes).
+- **Source Code**: Available in scripts/my_yolo/
 
 ## Results
 The custom model achieved an F1-score of 0.69, demonstrating excellent localization capabilities, although it is affected by heavy occlusions in cases of overlapping objects. YOLOv11n, on the other hand, provides the robustness necessary for industrial deployment.
