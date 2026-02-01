@@ -6,7 +6,7 @@ This project develops an artificial vision system for automatic recognition of f
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 - [Project Description](#project-description)
 - [Repository Structure](#repository-structure)
 - [Synthetic Dataset Pipeline](#synthetic-dataset-pipeline)
@@ -77,6 +77,9 @@ The custom model achieved an F1-score of 0.69, demonstrating excellent localizat
 
 ## Contacts
 **Damiano Marton** - Belisama Yacht
+
 📧 damiano.marton@studenti.unipd.it
+
 📧 damianomarton@belisamayacht.it
+
 🌐 www.belisamayacht.it
