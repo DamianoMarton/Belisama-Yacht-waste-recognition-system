@@ -1,0 +1,182 @@
+{
+    "algae": {
+        "label": 0,
+        "colors": [],
+        "reference_size" : [5, 6, 7, 9, 11, 12, 13],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.8
+        }
+    },
+
+    "aluminum_container": {
+        "label": 1,
+        "colors": [],
+        "reference_size" : [15, 20 ,25, 28],
+        "data_augmentation": {
+            "rotate": 90,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.8
+        }
+    },
+
+    "aluminum_foil": {
+        "label": 2,
+        "colors": [],
+        "reference_size" : [8, 11],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.7
+        }
+    },
+
+    "carton": {
+        "label": 3,
+        "colors": [],
+        "reference_size" : [15, 20, 22, 27, 32],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.8
+        }
+    },
+
+    "disposable_cup": {
+        "label": 4,
+        "colors": ["blue", "green", "white"],
+        "reference_size" : [5, 7, 9],
+        "data_augmentation": {
+            "rotate": 90,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.8
+        }
+    },
+
+    "drink_can": {
+        "label": 5,
+        "colors": ["blue", "green", "yellow", "red", "white", "black"],
+        "reference_size" : [12, 14],
+        "data_augmentation": {
+            "rotate": 180,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.9
+        }
+    },
+
+    "drink_carton": {
+        "label": 6,
+        "colors": ["blue", "green", "white", "black"],
+        "reference_size" : [15, 20, 22],
+        "data_augmentation": {
+            "rotate": 180,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.9
+        }
+    },
+
+    "other": {
+        "label": 7,
+        "colors": ["blue", "green", "yellow", "red", "white", "black"],
+        "reference_size" : [5, 10, 15, 20, 25, 30],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.1,
+            "resize_min": 0.9,
+            "p_bottom": 0.7
+        }
+    },
+
+    "plastic_bag": {
+        "label": 8,
+        "colors": ["blue", "green", "yellow", "red", "white", "black"],
+        "reference_size" : [15, 20, 25, 30, 35, 40],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.5,
+            "resize_min": 0.5,
+            "p_bottom": 0.6
+        }
+    },
+
+    "plastic_bottle": {
+        "label": 9,
+        "colors": ["blue", "green"],
+        "reference_size": [18, 21],
+        "data_augmentation": {
+            "rotate": 180,
+            "resize_max": 1.1,
+            "resize_min": 0.9,
+            "p_bottom": 0.8
+        }
+    },
+
+    "plastic_lid": {
+        "label": 10,
+        "colors": ["blue", "red", "green", "yellow", "white"],
+        "reference_size": [3, 6],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.2,
+            "resize_min": 0.9,
+            "p_bottom": 0.8
+        }
+    },
+
+    "plastic_straw": {
+        "label": 11,
+        "colors": ["blue", "red", "green", "yellow"],
+        "reference_size": [15, 17],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.1,
+            "resize_min": 0.9,
+            "p_bottom": 0.7
+        }
+    },
+
+    "snack_packet": {
+        "label": 12,
+        "colors": ["blue", "red", "green", "yellow"],
+        "reference_size": [5, 20],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.1,
+            "resize_min": 0.9,
+            "p_bottom": 0.7
+        }
+    },
+
+    "stick": {
+        "label": 13,
+        "colors": [],
+        "reference_size": [30, 20, 40],
+        "data_augmentation": {
+            "rotate": 180,
+            "resize_max": 1.1,
+            "resize_min": 0.5,
+            "p_bottom": 0.9
+        }
+    },
+
+    "styrofoam_piece": {
+        "label": 14,
+        "colors": [],
+        "reference_size": [20, 25],
+        "data_augmentation": {
+            "rotate": true,
+            "resize_max": 1.2,
+            "resize_min": 0.8,
+            "p_bottom": 0.7
+        }
+    }
+
+}

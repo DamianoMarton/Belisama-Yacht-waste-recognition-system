@@ -1,0 +1,7 @@
+{
+    "background": {
+        "dimensions" : [640, 640],
+        "upper_left_limit" : [18, 48], 
+        "lower_right_limit" : [622, 619]
+    }
+}

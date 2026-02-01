@@ -1,0 +1,21 @@
+path: /content/dataset
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: algae
+  1: aluminum_container
+  2: aluminum_foil
+  3: carton
+  4: disposable_cup
+  5: drink_can
+  6: drink_carton
+  7: other
+  8: plastic_bag
+  9: plastic_bottle
+  10: plastic_lid
+  11: plastic_straw
+  12: snack_packet
+  13: stick
+  14: styrofoam_piece
