@@ -4,8 +4,8 @@ import json
 import shutil
 import numpy as np
 
-BASE_FOLDER = "objects_creation"
-PREFERENCE_FILE_PATH = "class_preferences.json"
+BASE_FOLDER = os.path.join("dataset", "objects_creation")
+PREFERENCE_FILE_PATH = os.path.join("dataset", "class_preferences.json")
 REFERENCE_FOLDER = os.path.join(BASE_FOLDER, "2_true_size")
 AUGMENTED_FOLDER = os.path.join(BASE_FOLDER, "3_color_filtered")
 

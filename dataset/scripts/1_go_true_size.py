@@ -3,8 +3,8 @@ import json
 import os
 import numpy as np
 
-BASE_FOLDER = "objects_creation"
-PREFERENCE_FILE_PATH = "class_preferences.json"
+BASE_FOLDER = os.path.join("dataset", "objects_creation")
+PREFERENCE_FILE_PATH = os.path.join("dataset", "class_preferences.json")
 REFERENCE_FOLDER = os.path.join(BASE_FOLDER, "1_transparent_cropped")
 AUGMENTED_FOLDER = os.path.join(BASE_FOLDER, "2_true_size")
 
