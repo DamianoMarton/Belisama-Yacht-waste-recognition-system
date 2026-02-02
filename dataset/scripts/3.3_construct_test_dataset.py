@@ -50,6 +50,7 @@ os.makedirs(TEST_IMAGES_FOLDER)
 if os.path.exists(TEST_LABELS_FOLDER):
     shutil.rmtree(TEST_LABELS_FOLDER)
 os.makedirs(TEST_LABELS_FOLDER)
+
 #--------------------------------------------------------------------------------
 
 with open(PREFERENCE_FILE_PATH, "r", encoding="utf-8") as f:

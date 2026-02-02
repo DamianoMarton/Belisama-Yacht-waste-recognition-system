@@ -48,6 +48,7 @@ os.makedirs(VALIDATION_IMAGES_FOLDER)
 if os.path.exists(VALIDATION_LABELS_FOLDER):
     shutil.rmtree(VALIDATION_LABELS_FOLDER)
 os.makedirs(VALIDATION_LABELS_FOLDER)
+
 #--------------------------------------------------------------------------------
 
 with open(PREFERENCE_FILE_PATH, "r", encoding="utf-8") as f:

@@ -24,6 +24,8 @@ color_dictionary = {
 
 #--------------------------------------------------------------------------------
 
+os.makedirs(AUGMENTED_FOLDER, exist_ok=True)
+
 with open(PREFERENCE_FILE_PATH, "r", encoding="utf-8") as f:
     preferences = json.load(f)
 
@@ -32,6 +34,7 @@ for class_folder in os.listdir(REFERENCE_FOLDER):
 
     reference_folder = os.path.join(REFERENCE_FOLDER, class_folder)
     current_folder = os.path.join(AUGMENTED_FOLDER, class_folder)
+    os.makedirs(current_folder, exist_ok=True)
 
     colors = preferences[class_folder]["colors"]
     if "none" not in colors:
