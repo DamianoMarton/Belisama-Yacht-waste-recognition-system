@@ -48,7 +48,7 @@ The project compares two approaches:
 ```
 
 ## Synthetic Dataset Pipeline
-Data generation is managed by scripts in the dataset/scripts/ folder.
+Data generation is managed by scripts in the [Dataset Scripts](dataset/scripts) folder.
 
 **Operating Logic**:
 
@@ -63,7 +63,7 @@ After running the scripts in the sequence shown and fine-tuning the parameters f
 
 We used transfer learning to adapt YOLOv11n to our specific scenario (13 waste classes + 1 "other" class).
 
-- **Training Notebook**: Available in scripts/yolo/
+- **Training Notebook**: Available in [Scripts Yolo](scripts/yolo)
 - **Performance**: Precision 0.97, Recall 0.93.
 
 **Custom Minimal YOLO-like**
@@ -73,7 +73,7 @@ Developed for internal research purposes, it uses:
 - **Architecture**: Convolutional backbone (stride 2) and Neck with residual blocks (skip connections).
 - **Grid**: 20x20 cells (up to 400 predictions, just one for each cell).
 - **Loss**: Binary Cross Entropy (objectness), IoU Loss (bounding boxes) and Cross Entropy (classes).
-- **Source Code**: Available in scripts/my_yolo/
+- **Source Code**: Available in [Scripts My_Yolo](scripts/my_yolo)
 
 ## Results
 The custom model achieved an F1-score of 0.69, demonstrating excellent localization capabilities, although it is affected by heavy occlusions in cases of overlapping objects. YOLOv11n, on the other hand, provides the robustness necessary for industrial deployment.
